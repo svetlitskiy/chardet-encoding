@@ -1,0 +1,40 @@
+{
+  "name": "grunt-chardet-encoding",
+  "description": "Check character encoding of files using chardet.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/svetlitskiy/grunt-chardet-encoding",
+  "author": {
+    "name": "Aleksey Svetlitskiy",
+    "email": "a.svetlitskiy@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/svetlitskiy/grunt-chardet-encoding"
+  },
+  "bugs": {
+    "url": "https://github.com/svetlitskiy/grunt-chardet-encoding"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/svetlitskiy/grunt-chardet-encoding/blob/master/LICENSE"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "fs": "0.0.2",
+    "grunt": "~0.4.5",
+    "jschardet": "^1.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin",
+    "encoding",
+    "jschardet"
+  ],
+  "dependencies": {
+    "jschardet": "^1.4.1"
+  }
+}
