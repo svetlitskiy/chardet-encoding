@@ -51,7 +51,7 @@ module.exports = function (grunt) {
             }
         }
         if (msg) {
-            grunt.log.write(msg);
+            grunt.fail.warn(msg);
         }
     };
 
