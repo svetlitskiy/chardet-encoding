@@ -1,7 +1,7 @@
 {
   "name": "grunt-chardet-encoding",
   "description": "Check character encoding of files using chardet.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/svetlitskiy/grunt-chardet-encoding",
   "author": {
     "name": "Aleksey Svetlitskiy",
@@ -35,6 +35,6 @@
     "jschardet"
   ],
   "dependencies": {
-    "jschardet": "^1.4.1"
+    "jschardet": "^1.4.*"
   }
 }

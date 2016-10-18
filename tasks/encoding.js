@@ -1,8 +1,8 @@
 /*
- * grunt-encoding
+ * grunt-chardet-encoding
  * https://github.com/pigulla/grunt-encoding
  *
- * Copyright (c) 2013-2015 Raphael Pigulla <pigulla@four66.com>
+ * Copyright (c) 2016 Aleksey Svetlitskiy <a.svetlitskiy@gmail.com>
  * Licensed under the MIT license.
  */
 'use strict';
@@ -14,7 +14,7 @@ var
 module.exports = function (grunt) {
 
     grunt.registerMultiTask('encoding', 'check encoding task', function() {
-        var files = grunt.file.expand(this.data.src);
+        var files = grunt.file.expand(this.data.src), phMode = this.data.prohibitionMode || false;
         if (this.data.exclude) {
             grunt.file.expand(this.data.exclude).forEach(function(e) {
                 files.splice(files.indexOf(e), 1);
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
         files.forEach(function(file) {
             if (grunt.file.isFile(file)) {
-                checkFileEncoding(file, encoding);
+                checkFileEncoding(file, encoding, phMode);
             }
         });
 
@@ -32,17 +32,26 @@ module.exports = function (grunt) {
 
     /**
      * Check file is one of encodings
-     * @param {patch to file} patch - file patch
+     * @param {String} patch - file patch
      * @param {Array} encodings - encodings
+     * @prohibitionMode {Boolean} - mode
    */
-    var checkFileEncoding = function(patch, encodings) {
-        var text, encoding;
+    var checkFileEncoding = function(patch, encodings, prohibitionMode) {
+        var text, encoding, msg;
         text = fs.readFileSync(patch);
         encoding = jschardet.detect(text).encoding;
         grunt.log.write('the file ' + patch + ' was detected like ' + encoding + ' encoding \n');
-        if (encodings.indexOf(encoding) === -1) {
-            var msg = 'The encoding of file ' + patch + ' is "' + encoding + '", but it has to be in "' + encodings.join(',') + '"';
-            grunt.fail.warn(msg);
+        if (prohibitionMode === true) {
+            if (encodings.indexOf(encoding) > -1) {
+                msg = 'The file ' + patch + ' has the forbidden encoding "' + encoding + '" \n';
+            }
+        } else {
+            if (encodings.indexOf(encoding) === -1) {
+                msg = 'The encoding of file ' + patch + ' is "' + encoding + '", but it has to be in "' + encodings.join(',') + '"\n';
+            }
+        }
+        if (msg) {
+            grunt.log.write(msg);
         }
     };
 
