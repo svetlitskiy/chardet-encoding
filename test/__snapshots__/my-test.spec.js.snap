@@ -2,7 +2,6 @@
 
 exports[`test utf8 target 1`] = `
 "Running \\"encoding:utf8\\" (encoding) task
-kek
 the file utf8-test/utf8-first.js was detected like UTF-8 encoding 
 the file utf8-test/utf8-second.txt was detected like UTF-8 encoding 
 the file utf8-test/win1251-second.js was detected like windows-1251 encoding 
@@ -20,7 +19,6 @@ Aborted due to warnings.
 
 exports[`test win1251 target 1`] = `
 "Running \\"encoding:win1251\\" (encoding) task
-kek
 the file win1251-test/win1251-another.txt was detected like windows-1251 encoding 
 the file win1251-test/win1251-third.txt was detected like windows-1251 encoding 
 the file win1251-test/win1251.txt was detected like windows-1251 encoding 
