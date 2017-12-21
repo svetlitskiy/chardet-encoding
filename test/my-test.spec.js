@@ -20,6 +20,7 @@ test('test win1251 target', async () => {
 
   await executeCommand('npm run clear', TEST_PROJECT_DIR);
   await executeCommand('npm i', TEST_PROJECT_DIR);
+
   const result = await executeCommand('npx grunt encoding:win1251', TEST_PROJECT_DIR);
 
   expect(normalizeResults(result)).toMatchSnapshot();

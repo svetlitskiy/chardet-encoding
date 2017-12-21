@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-chardet-encoding": "file:../.."
+    "grunt": "^1.0.1"
   },
   "dependencies": {
+    "grunt-chardet-encoding": "file:../..",
     "rimraf": "^2.6.2"
   }
 }
