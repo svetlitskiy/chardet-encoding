@@ -1,0 +1,3 @@
+// I have wrong encoding
+// test of utf8 correctness
+тест utf8

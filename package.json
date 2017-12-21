@@ -7,6 +7,9 @@
     "name": "Aleksey Svetlitskiy",
     "email": "a.svetlitskiy@gmail.com"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/svetlitskiy/grunt-chardet-encoding"
@@ -24,7 +27,9 @@
   "devDependencies": {
     "fs": "0.0.2",
     "grunt": "*",
-    "jschardet": "^1.4.1"
+    "jest": "^22.0.3",
+    "jschardet": "^1.4.1",
+    "rimraf": "^2.6.2"
   },
   "keywords": [
     "gruntplugin",
