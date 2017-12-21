@@ -1,0 +1,3 @@
+// I have win1251
+// test of win1251 correctness
+тест win1251
