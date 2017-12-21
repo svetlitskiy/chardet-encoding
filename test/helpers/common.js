@@ -1,46 +1,29 @@
-const { spawn, exec } = require('child_process');
+const { exec } = require('child_process');
 
 module.exports = {
-  executeCommand
+  executeCommand,
+  normalizeResults
 };
 
 async function executeCommand(cmd, cwd) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(resolve => {
     exec(cmd, {
       cwd: cwd,
     }, (error, stdout) => {
-      resolve(stdout);/*
-      if (error && error.code !== 0) {
-        console.log(JSON.stringify(stdout));
-        console.log(JSON.stringify(stderr));
-      }*/
+      resolve(stdout);
     });
   });
 }
-/*
 
-async function executeCommand(cmd, cwd) {
-  return new Promise(function(resolve, reject) {
-    const child = spawn(cmd, [], {
-      shell: true,
-      stdio: 'inherit',
-      cwd: cwd,
-    });
+/**
+ * grunt provides output with operation system specific paths inside. to get tests working without binding to any OS should remove that paths.
+ *
+ * @param results
+ * @returns {string}
+ */
+function normalizeResults (results) {
+  // we need to remove operating system specific paths from the output
+  const [_, ...payloadWithoutOSSpecificPaths] = results.split('\n');
 
-    let stdout = '';
-
-/!*    child.stdout.on('data', data => {
-      stdout += data.toString();
-    });*!/
-
-    child.on('exit', (code, signal) => {
-      var kek = child;
-      if (code === 0) {
-        resolve('kek');
-      } else {
-        reject(signal);
-      }
-    });
-  });
+  return payloadWithoutOSSpecificPaths.join('\n');
 }
-*/
