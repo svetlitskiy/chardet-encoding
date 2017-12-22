@@ -1,7 +1,7 @@
 # chardet-encoding
 check encoding in files
 
-version 0.1.6
+version 2.0.0
 
 List of supported charsets is available [here](https://github.com/aadsm/jschardet#supported-charsets).
 
