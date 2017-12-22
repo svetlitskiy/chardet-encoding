@@ -24,11 +24,13 @@
     }
   ],
   "main": "Gruntfile.js",
+  "dependencies": {
+    "jschardet": "^1.6.0"
+  },
   "devDependencies": {
     "fs": "0.0.2",
     "grunt": "*",
     "jest": "^22.0.3",
-    "jschardet": "^1.6.0",
     "rimraf": "^2.6.2"
   },
   "keywords": [
