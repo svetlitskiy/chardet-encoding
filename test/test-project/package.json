@@ -1,0 +1,19 @@
+{
+  "name": "internal-test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt encoding",
+    "clear": "npx rimraf node_modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  },
+  "dependencies": {
+    "grunt-chardet-encoding": "file:../..",
+    "rimraf": "^2.6.2"
+  }
+}

@@ -12,7 +12,6 @@ var
     jschardet = require('jschardet');
 
 module.exports = function (grunt) {
-
     grunt.registerMultiTask('encoding', 'check encoding task', function() {
         var files = grunt.file.expand(this.data.src), phMode = this.data.prohibitionMode || false;
         if (this.data.exclude) {
@@ -22,12 +21,22 @@ module.exports = function (grunt) {
         }
         var encoding = this.data.encoding;
 
+        var errorMessages = [];
+
         files.forEach(function(file) {
             if (grunt.file.isFile(file)) {
-                checkFileEncoding(file, encoding, phMode);
+                var result = checkFileEncoding(file, encoding, phMode);
+
+                if (result) {
+                    errorMessages.push(result);
+                }
             }
         });
 
+        if (errorMessages.length > 0) {
+          var errorMessage = errorMessages.join('');
+          grunt.fail.warn('\n\nProblems: \n' + errorMessage);
+        }
     });
 
     /**
@@ -47,12 +56,13 @@ module.exports = function (grunt) {
             }
         } else {
             if (encodings.indexOf(encoding) === -1) {
-                msg = 'The encoding of file ' + patch + ' is "' + encoding + '", but it has to be in "' + encodings.join(',') + '"\n';
+                var allowedEncodings = encodings.length > 1 ? encodings.join(',') : encodings[0];
+
+                msg = 'The encoding of file ' + patch + ' is "' + encoding + '", but it has to be in [' + allowedEncodings + ']\n';
             }
         }
-        if (msg) {
-            grunt.fail.warn(msg);
-        }
+
+        return msg;
     };
 
 };
